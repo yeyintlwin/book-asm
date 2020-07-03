@@ -1302,9 +1302,9 @@ MUL/IMUL multiplier
 
 | Sr. No. | Scenarios |
 | :--: | -- |
-| 1 | __bytes values နှစ်ခုကို မြှောက်တဲ့အခါ -__<br><br>multiplicand က AL register ထဲမှာဖြစ်တယ်၊ ပြီးတော့ multiplier က memory သိုမဟုတ် အခြားသော register ထဲက byte တစ်ခု ဖြစ်ပါတယ်။ ရလဒ် (product) က AX ထဲမှာဖြစ်ပါတယ်၊ product က High-order 8 bits ဆိုရင် AH မှာ store မှာဖြစ်ပြီး low-order 8 bits ဆိုရင် AL ထဲမှာ သွားပြီး stored မှာဖြစ်ပါတယ်။<br><br><center>![](arithmetic1.jpg)</center> |
-| 2 | __one-word values နှစ်ခုကိုမြှောက်တဲ့အခါမှာ -__<br><br>multiplicand က AX register မှာဖြစ်သင့်ပါတယ်၊ ပြီးတော့ multiplier က memory သို့မဟုတ် အခြား register မှာ word တစ်ခုအနေနဲ့ ရှိရမယ်၊ ဥပမာ MUL DL လို instruction တစ်ခုမှာ multiplier ကို DX မှာ store ရမှာဖြစ်ပြီး multiplicand ကို AX မှာထားရမှာပါ။<br><br>နောက်ဆုံးရလဒ်ကတော့ doubleword တစ်ခုဖြစ်မှာပါ၊ ၎င်းက registers နှစ်ခုလိုပါတယ်။ high-order (leftmost) portion က DX မှာ stored မှာဖြစ်ပြီး low-order (rightmost) portion က AX ထဲမှာ stored မှာဖြစ်ပါတယ်။<br><br><center>![](arithmetic2.jpg)</center> |
-| 3 | __doubleword values နှစ်ကိုမြှောက်တဲ့အခါမှာ -__ multiplicand ကို EAX မှာထားသင့်ပြီး multiplier က double word ဖြစ်ပြီး memory သို့မဟုတ် အခြား register မှာ stored လုပ်သင့်ပါတယ်၊ ရလာတဲ့ product ကို EDX: EAX registers တွေမှာ stored မှာဖြစ်ပါတယ်၊ အကြောင်းမှာ high order 32 bits ကို EDX register မှာ stored မှာဖြစ်ပြီး low order 32-bits တွေကို EAX register မှာ stored မှာဖြစ်ပါတယ်။<br><br><center>![](arithmetic3.jpg)</center> |
+| 1 | __bytes values နှစ်ခုကို မြှောက်တဲ့အခါ -__<br><br>multiplicand က AL register ထဲမှာဖြစ်တယ်၊ ပြီးတော့ multiplier က memory သိုမဟုတ် အခြားသော register ထဲက byte တစ်ခု ဖြစ်ပါတယ်။ ရလဒ် (product) က AX ထဲမှာဖြစ်ပါတယ်၊ product က High-order 8 bits ဆိုရင် AH မှာ store မှာဖြစ်ပြီး low-order 8 bits ဆိုရင် AL ထဲမှာ သွားပြီး stored မှာဖြစ်ပါတယ်။<br><br><center><img src="arithmetic1.jpg" alt="arithmetic1"></center> |
+| 2 | __one-word values နှစ်ခုကိုမြှောက်တဲ့အခါမှာ -__<br><br>multiplicand က AX register မှာဖြစ်သင့်ပါတယ်၊ ပြီးတော့ multiplier က memory သို့မဟုတ် အခြား register မှာ word တစ်ခုအနေနဲ့ ရှိရမယ်၊ ဥပမာ MUL DL လို instruction တစ်ခုမှာ multiplier ကို DX မှာ store ရမှာဖြစ်ပြီး multiplicand ကို AX မှာထားရမှာပါ။<br><br>နောက်ဆုံးရလဒ်ကတော့ doubleword တစ်ခုဖြစ်မှာပါ၊ ၎င်းက registers နှစ်ခုလိုပါတယ်။ high-order (leftmost) portion က DX မှာ stored မှာဖြစ်ပြီး low-order (rightmost) portion က AX ထဲမှာ stored မှာဖြစ်ပါတယ်။<br><br><center><img src="arithmetic2.jpg" alt="arithmetic2"></center> |
+| 3 | __doubleword values နှစ်ကိုမြှောက်တဲ့အခါမှာ -__ multiplicand ကို EAX မှာထားသင့်ပြီး multiplier က double word ဖြစ်ပြီး memory သို့မဟုတ် အခြား register မှာ stored လုပ်သင့်ပါတယ်၊ ရလာတဲ့ product ကို EDX: EAX registers တွေမှာ stored မှာဖြစ်ပါတယ်၊ အကြောင်းမှာ high order 32 bits ကို EDX register မှာ stored မှာဖြစ်ပြီး low order 32-bits တွေကို EAX register မှာ stored မှာဖြစ်ပါတယ်။<br><br><center><img src="arithmetic3.jpg" alt="arithmetic3"></center> |
 
 __ဥပမာ__
 
@@ -2091,26 +2091,24 @@ The Sum is:
 ``` 
 msg db 'Hello, World!', 0xa     ; our dear string
 len equ $ - msg                 ; length of our dear string
-``` 
+```
 
 $ က _msg_ ဆိုတဲ့ string variable ရဲ့ last character ပြီးတဲ့နောက် byte ကို points လုပ်ပါတယ်။ ထို့ကြောင့် __$-msg__ က string ရဲ့ length ကို ပေနိုင်တာပါ။ အောက်ပါ အတိုင်းလည်းရေးနိုင်ပါတယ် -
 
-```
-
+``` 
 msg db 'Hello, world!', 0xa     ; our dear string
 len equ 13                      ; length of our dear strings
 
-``` 
+```
 
 တစ်နည်းအားဖြင့် string တစ်ခုကို delimit လုပ်ရန် string length explicitly တစ်ခုကို storing လုပ်နေမည်အစား သင့်အနေနဲ့  strings တွေကို trailing sentinel character တစ်ခုနှင့် store နိုင်ပါတယ်။ sentinel character က string တစ်ခုမှာ ပေါ်မလာနိုင်တဲ့ special character တစ်ခုဖြစ်သင့်ပါတယ်။
 
 ဥပမာ -
 
-```
-
+``` 
 message DB 'I am loving it', 0
 
-``` 
+```
 
 ## String Instructions
 
@@ -2172,28 +2170,25 @@ REP prefix မှာအောက်ပါ variations တွေလည်းရှ
 
 ဥပမာအားဖြစ် word တစ်ခုဖြစ်တဲ့ 'months' ကို အောက်ပါတို့အနက် တစ်ခုခုနှင့် ကျွန်တော်တို့ သတ်မှတ်ပေးနိုင်ပါတယ် -
 
-```
-
+``` 
 MONTHS DW 12
 MONTHS DW 0CH
 MONTHS DW 0110B
 
-``` 
+```
 
 data defination directives တွေက one-dimensional array တစ်ခုကို သတ်မှတ်ပေးဖို့လည်း သုံးနိုင်ပါသေးတယ်။ numbers တွေရဲ့ one-dimensional array တစ်ခုကို သတ်မှတ်ကြည့်ကြရအောင်။
 
-```
-
+``` 
 NUMBERS DW 34, 45, 56, 67, 75, 89
 
-``` 
+```
 
 အထက်ပါ defination က words (၆)ခုပါတဲ့ array တစ်ခုကို ကြေငြာထားတာပါ တစ်ခုခြင်းစီကို 34, 45, 56, 67, 75, 89 စတဲ့ numbers တွေနဲ့ initialized လုပ်ထားပါတယ်။ သူက consecutive memory space ရဲ့ 2x6=12 bytes ကို allocates လုပ်ပါတယ်။ first number ရဲ့ symbolic address က NUMBERS ဖြစ်မှာဖြစ်ပြီး ၎င်းရဲ့ second number က NUMBERS + 2 စသည့်ဖြစ် တိုးတိုးပြီးရှိနေပါလိမ့်မယ်။
 
 နောက် example တစ်ခုကိုလေ့လာကြည့်ရအောင်။ inventory လို့နာမည်ပေးထားတဲ့ size 8 ရှိတဲ့ array တစ်ခုကို သင့်အနေနဲ့ အောက်ပါအတိုင်း သတ်မှတ်နိုင်ပါတယ်၊ ပြီးတော့ ၎င်းတို့ရဲ့ တန်ဖို့တွေကို 0 နှင့် initialize လုပ်ရင် -
 
-```
-
+``` 
 INVENTORY   DW 0
 
             DW 0
@@ -2204,28 +2199,27 @@ INVENTORY   DW 0
             DW 0
             DW 0
 
-``` 
+```
+
 ၎င်းကို အောက်ပါအတိုင် အကျဉ်းချုံ့နိုင်ပါတယ် -
 
-```
-
+``` 
 INVENTORY DW    0, 0 , 0 , 0 , 0 , 0 , 0 , 0
 
-``` 
-
-TIMES directive ကလည်း multiple intializations တွေအတွက် တူညီတဲ့တန်ဖိုးလုပ်ရန် သုံးနိုင်ပါသေးတယ်။ TIMES ကိုအသုံးပြုပြီး INVENTORY array ကို အောက်ပါအတိုင်းသတ်မှတ်နိုင်ပါတယ် -
 ```
 
-INVENTORY TIMES 8 DW 0
+TIMES directive ကလည်း multiple intializations တွေအတွက် တူညီတဲ့တန်ဖိုးလုပ်ရန် သုံးနိုင်ပါသေးတယ်။ TIMES ကိုအသုံးပြုပြီး INVENTORY array ကို အောက်ပါအတိုင်းသတ်မှတ်နိုင်ပါတယ် -
 
 ``` 
+INVENTORY TIMES 8 DW 0
+
+```
 
 __Example__
 
 အောက်ပါ example က အထက်ပါ concept ကို element 3 ခုပါတဲ့ x ဆိုတဲ့ array ကို definding လုပ်ပေးခြင်းဖြင့် demonstarates လုပ်ပြထားတာပါ။ ၎င်း x က 2, 3, နဲ့ 4 ဆိုတဲ့ numbers (၄)ခုကို stores ထားမှာဖြစ်ပါတယ်။ ၎င်းက array ထဲမှာရှိတဲ့ တန်ဖိုးတွေကို ပေါင်းပေးမှာဖြစ်ပြီး ပေါင်းလဒ် 9 ကို display ပြမှာဖြစ်ပါတယ်။
 
-```
-
+``` 
 section .text
 
     global _start:  ;must be declared for linker (ld)
@@ -2267,14 +2261,15 @@ sum:
 
     db 0
 
-``` 
+```
+
 အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
+
+``` 
+9
 
 ```
 
-9
-
-``` 
 # Assembly - Procedures
 
 Procedures သို့မဟုတ် subroutines တွေက assembly language မှာအလွန်အရေးပါတယ်။ ဘယ်လိုလဲဆိုတော့ assembly language programs တွေက size ကြီးသွားနိုင်တဲ့ အလားအလာရှိပါတယ်။ procedures တွေကို name တစ်ခုနဲ့ identified လုပ်ပါတယ်။ အောက်ပါ name မှာ procedure က ဘယ်အရာက well-defined job တစ်ခုကိုဆောင်ရွက်နေလဲဆိုတာ ဖော်ပြပါတယ်။ procedure ရဲ့အဆုံးက return statement တစ်ခုနဲ့ indicated လုပ်ပါတယ်။
@@ -2283,31 +2278,29 @@ __Syntax__
 
 အောက်ပါ syntax ကတော့ procedure တစ်ခုကို သတ်မှတ်ပြထားတာဖြစ်ပါတယ်။
 
-```
-
+``` 
 proc_name:
 
     procedure body
     ...
     ret
 
-``` 
+```
 
 procedure ကို အခြား function တစ်ခုက ခေါ်ယူလိုလျှင် CALL instruction ကိုသုံးရပါတယ်။ CALL instruction မှာ ခေါ်ယူတာခံရမည့် procedure ရဲ့ နာမည် က arguiment တစ်ခုအနေနဲ့ အောက်မှာပြထာတဲ့အတိုင်း ပါဝင်သင့်ပါတယ်။
 
-```
-
+``` 
 CALL proc_name
 
-``` 
+```
+
 အခေါ်ခံရတဲ့ prodecure က ခေါ်ယူတဲ့ procedure ကို RET instrction ကိုသုံးခြင်းအားဖြင့် control ကို return အနေနဲ့ပြန်ပေးပါတယ်။
 
 __Example__
 
 _sum_ ဆိုတဲ့ နာမည်ရှိတဲ့ ရိုးရှင်းလှတဲ့ prodecure တစ်ခုကို ရေးကြည့်ရအောင်။ ၎င်းက ECX နှင့် EDX registers တွေထဲမှာရှိတဲ့ variables တွေကို ပေါင်းပေးမှာဖြစ်ပြီး ပေါင်းလဒ်ကို EAX register မှာ return အနေနဲ့ပြန်ပေးမှာဖြစ်ပါတယ် -
 
-```
-
+``` 
 section .text
 
     global _start   ;must be declard for using gcc
@@ -2352,15 +2345,15 @@ section .data
 segment .bss
 res resb 1
 
-``` 
-အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
-
 ```
 
+အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
+
+``` 
 The sum is:
 9
 
-``` 
+```
 
 ## Stacks Data Structure
 
@@ -2368,12 +2361,12 @@ stack တစ်ခုဆိုတာ memory ထဲမှ stack တစ်ခု�
 
 assembly language မှာ stack operations တွေအတွက် instruction နှစ်ခု ထောက်ပံ့ပေးထားပါတယ်။ ၎င်းတို့မှာ PUSH နှင့် POP တို့ဖြစ်ပါတယ်။ ထို instructions တွေကို အောက်ပါ syntax အတိုင်းရေးရပါတယ် -
 
-```
-
+``` 
 PUSH operand
 POP address/register
 
-``` 
+```
+
 stack ကို implementing လုပ်ရန် stack segment ထဲက memory space ကိုသီးသန့်ထားရှိပါတယ်။ registers တွေဖြစ်တဲ့ SS နင့် ESP (or SP) တို့ကို stack ကို implementing လုပ်ဖို့သုံးပါတယ်။ stack ရဲ့ top မှာ ရှိတဲ့ points တွေကနေ နောက်ဆုံး stack ထဲကို insert လုပ်ထားတဲ့ last data item က SS: ESP register ဖြစ် pionted လုပ်ပါတယ်။ ဒီနေရာမှာ SS register က stack segment ရဲ့ အစကို points လုပ်ပါတယ် ပြီးတော့ SP (or ESP) က segment ထဲသို့  offset တွေပေးပါတယ်။
 
 stack implementation မှာအောက်ပါ ထူခြားတဲ့ လက္ခဏာတွေရှိပါတယ် တွေရှိပါတယ် -
@@ -2386,8 +2379,7 @@ stack implementation မှာအောက်ပါ ထူခြားတဲ့ 
 
 ကျွန်တော်တို့က stack ထဲမှာ တစ်စုံတစ်ရာအတွက်သုံးဖို့ မလုပ်ခင် registers တွေရဲ့ တန်ဖိုးတွေ storing လုပ်တာကို အထက်မှာဆွေနွှေးခဲ့ ပြီးဖြစ်ပါသည်။ ၎င်းကို အောက်ပါ နည်းလမ်းအတိုင်း ဆောင်ရွက်နိုင်ပါတယ် -
 
-```
-
+``` 
 ; Save the AX and BX registers in the stacks
 PUSH AX
 PUSH BX
@@ -2403,13 +2395,13 @@ MOV VALUE2, BX
 POP BX
 POP AX
 
-``` 
+```
+
 __Example__
 
 အောက်ပါ program က ASCII character set တွေကြီးပဲကို display ပြမှာဖြစ်ပါတယ်။ main program က _display_ ဆိုတဲ့နာမည်နဲ့ procedure ကို call လုပ်မှာဖြစ်ပါတယ်, ၎င်းက ASCII character set ကို display ပြမှာဖြစ်ပါတယ်။
 
-```
-
+``` 
 section .text
 
     global _start   ;must be decleared for using gcc
@@ -2444,15 +2436,16 @@ next:
 section .data
 achar db '0'
 
-``` 
-အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
 ```
 
+အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
+
+``` 
 0123456789:; <=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}
 ...
 ...
 
-``` 
+```
 
 # Assembly - Recursion
 
@@ -2460,18 +2453,16 @@ reculsive procedure တစ်ခုက သူကိုယ်သူ တစ်က�
 
 recursion က numerous mathematical algorithms တွေမှာ observed လုပ်နိုင်ပါတယ်။ ဥပမာ ဆိုရလျှင် number တစ်ခုရဲ့ factorial ကိုတွက်ချက်ပုံကို သတိချပ်ပါ၊ number တစ်ခုရဲ့ factorial ကို အောက်ပါ equation အတိုင်းတွက်နိုင်ပါတယ် -
 
-```
-
+``` 
 Fact (n) = n * fact (n-1) for n > 0
 
-``` 
+```
 
 ဥပမာ 5 ရဲ့ factorial က 1 x 2 x 3 x 4 x 5 = 5x factoial of 4 ပြီးတော့ ၎င်းက recursive producure တစ်ခုကို example လုပ်ပြဖို့အကောင်းဆုံး နမူနာဖြစ်ပါတယ်။ recursive algorithm တိုင်းမှာ ending condition တစ်ခုပါကိုပါရပါတယ်။ ထို့ကြောင့် program ရဲ့ reculsive calling က condition က fulfilled ဖြစ်သွားတဲ့ အခါမှာ ရပ်သင့်ပါတယ်။ ဒီ factorial algorithm ရဲ့ case မှာ n တန်ဖိုး 0 ရောက်သွားတဲ့အချိန်မှာ end condition ဖြစ်သွားပါတယ်။
 
 အောက်ပါ program  က factorial n က assembly language မှာ ဘယ်လို implemented ဖြစ်လဲဆိုတာကိုပြဖိုပါ။ ဒီ program simple ကို လုပ်ဖို့ ကျွန်တော်တို့ 3 ရဲ့ factorial ကိုတွက်ရပါလိမ့်မယ်။
 
-```
-
+``` 
 section .text
 
     global _start      ;must be declared for using gcc
@@ -2520,16 +2511,15 @@ len equ $ - msg
 section .bss
 fact resb 1
 
-``` 
+```
 
 အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
 
-```
-
+``` 
 Factorial 3 is:
 6
 
-``` 
+```
 
 # Assembly - Macros
 
@@ -2542,13 +2532,12 @@ macro တစ်ခုရေးခြင်းက assembly language မှာ အ
 
 macro defination ရဲ့ ရေးသာပုံ syatax နမူနာကတော့ -
 
-```
-
+``` 
 %macro macro_name number_of_params
 <macro body>
 %endmacro
 
-``` 
+```
 
 ဒီနေရာမှာ *number_of_params* ဆိုတာက parameters တွေရဲ့အရည်အတွက်ကို သတ်မှတ်ပေးရမှာပါ၊ *macro_name* မှာတော့ macro ရဲ့နာမည်ကိုထည့်ပေးရမှာပါ။
 
@@ -2556,15 +2545,14 @@ macro က macro name ကို သုံးပြီး လိုအပ်တဲ
 
 ဥပမာအနေနဲ့ တကယ့် program မှာ ဘုံလိုအပ်ချက်တစ်ခုဖြစ်တဲ့ characters တွေရဲ့ string ကို screen မှာဖော်ပြတဲ့ လုပ်ဆောင်ချက်ကိုပါ။ characters တွေရဲ့ string ကို displaying လုပ်ဖို့ အောက်ပါ instructions တွေရဲ့ sequence ကိုသင့်အနေနဲ့လိုပါလိမ့်မယ် -
 
-```
-
+``` 
 mov	edx, len    ; message length
 mov	ecx, msg	; message to write
 mov	ebx, 1      ; file descriptor (stdout)
 mov	eax, 4      ; system call number (sys_write)
 int	0x80        ; call kernel
 
-``` 
+```
 
 အထက်ပါဥပမာမှာ chatacter string တစ်ခုကို dispalying လုပ်တာမှာ registers တွေဖြစ်တဲ့ ECX နှင့် EDX ကို INT 89H function call ဖြင့် အသုံးပြုနေပါတယ်။ ဒီတော့ သင်က screen မှာ display လုပ်ချင်တိုင်း ထို registers တွေကို stack မှာသွားပြီး save ဖို့လိုပါတယ်။ INT 80H ကို invoke လုပ်တယ် ပြီးတော့ stack မှာရှိတဲ့ registers တွေရဲ့ original value ကို restore လုပ်ရတယ်။ ဒီတော့ data ကို saveing နဲ့ restoring လုပ်ရန် macros နှစ်ခုကို write လုပ်ဖို့ သူကအသုံးဝင်ပါလိမ့်မယ်။
 
@@ -2574,8 +2562,7 @@ __Example__
 
 အောက်ပါ example ကတော့ macros တွေကို defining လုပ်ခြင်းနှင့် using လုပ်ခြင်းကို ပြထားတာပါ။
 
-```
-
+``` 
 ; A macro with two parameters
 ; Implements the write system call
 
@@ -2610,16 +2597,16 @@ len2 equ $ - msg2
 msg3 db 'Linux assembly programing! '
 len3 equ $ - msg3
 
-``` 
-အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
-
 ```
 
+အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
+
+``` 
 Hello, programmers!
 Welcome to the world of, 
 Linux assembly programming!
 
-``` 
+```
 
 # Assembly - File Management
 
@@ -2735,8 +2722,7 @@ __Example__
 
 အောက်ပါ program ကတော့ _myfile.txt_ အမည်ရှိတဲ့ file တစ်ခုကိုဖန်တီးမယ် ပြီးတော့ file ကိုဖွင့်မယ် ပြီးတော့ 'Welcome to Tutorials Point' ဆိုတဲ့ စာသားကို writes လုပ်မှာဖြစ်ပါတယ်။ နောက် program ကတော့ file ကနေ read လုပ်မယ် data ကို _info_ လို့နာမည်ပေးထားတဲ့ buffer တစ်ခုထဲကို stored လုပ်ပါမယ်။ နောက်ဆုံးမှာ _info_ ထဲမှာ stored လုပ်ထားတဲ့ စားသားကို displays ပြမှာဖြစ်ပါတယ်။
 
-```
-
+``` 
 section	.text
    global _start         ; must be declared for using gcc
 
@@ -2811,14 +2797,15 @@ fd_out resb 1
 fd_in  resb 1
 info resb  26
 
-``` 
-အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
 ```
 
+အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
+
+``` 
 Written to file
 Welcome to Tutorial Point
 
-``` 
+```
 
 # Assembly - Memory Management
 
@@ -2832,8 +2819,7 @@ __Example__
 
 အောက်ပါ program က memory အသုံးပြုမှု 16kb ရှိတဲ့ sys_brk() system call ကို allocates လုပ်တာဖြစ်ပါတယ် -
 
-```
-
+``` 
 section	.text
    global _start     ; must be declared for using gcc
 
@@ -2872,9 +2858,10 @@ section	.data
 msg    	db	"Allocated 16 kb of memory!", 10
 len     equ	$ - msg
 
-``` 
-အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
 ```
 
+အထက်ပါ code ကို compile ပြီး execute လုပ်တဲ့အခါမှာ အောက်ပါ result ကိုထုတ်ပေးပါလိမ့်မယ် -
+
+``` 
 Allocated 16 kb of memory!
 ```
