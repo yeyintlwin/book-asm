@@ -1384,9 +1384,9 @@ dividend  (တည်ကိန်း) က accumulator ထဲမှာရှိပ
 
 | Sr. No. | Scenarios |
 | :--: | -- |
-| 1 | __divisor (စားကိန်း) က 1 byte ဖြစ်လျှင် -__<br> dividend က AX register (16 bits) မှာဖြစ်သည်ဟု ယူဆသည်။ စားပြီးတဲ့နောက်မှာ quotient ကို AL register သို့ပိုမှာဖြစ်ပါတယ် ပြီးတော့ remainder ကို AH register သို့ပို့မှာဖြစ်ပါတယ်။ <br><br><center>![](arithmetic4.jpg)</center> |
-| 2 | __divisor က 1 word ဖြစ်လျှင် -__<br> dividend က 32 bits long လို့ ယူဆမှာဖြစ်ပြီး DX: AX registers တွေထဲသို့ သိမ်းမှာဖြစ်ပါတယ်။ high-order 16 bits တွေကို DX မှာဖြစ်ပြီး low-order 16 bits တွေကိုတော့ AX မှာဖြစ်ပါတယ်။ division လုပ်ပြီးတဲ့ အခါမှာ 16-bit quotient ကို AX register ထဲသို့သွား မှာဖြစ်ပြီး 16-bit remainder ကို DX register သို့ပို့မှာဖြစ်ပါတယ်။<br><br><center>![](arithmetic5.jpg)</center> |
-| 3 | __divisor က doubleword ဖြစ်လျှင် -__<br> dividend က 64 bits long လို့ယူဆမှာဖြစ်ပါတယ် ပြီးတော့ EDX: EAX registers တွေမှာပါ။ high-order 32 bits တွေကို  EDX မှာဖြစ်ပြီး low-order 32 bits တွေကို EAX မှာဖြစ်ပါတယ်၊ division ပြီးတဲ့နောက် 32-bit quotient ကို EAX register သို့ သွားစေပြီး 32-bit remainder ကို EDX register သို့ပိုမှာဖြစ်ပါတယ်။ <br><br><center>![](arithmetic6.jpg)</center> |
+| 1 | __divisor (စားကိန်း) က 1 byte ဖြစ်လျှင် -__<br> dividend က AX register (16 bits) မှာဖြစ်သည်ဟု ယူဆသည်။ စားပြီးတဲ့နောက်မှာ quotient ကို AL register သို့ပိုမှာဖြစ်ပါတယ် ပြီးတော့ remainder ကို AH register သို့ပို့မှာဖြစ်ပါတယ်။ <br><br><center><img src="arithmetic4.jpg" alt="arithmetic4"></center> |
+| 2 | __divisor က 1 word ဖြစ်လျှင် -__<br> dividend က 32 bits long လို့ ယူဆမှာဖြစ်ပြီး DX: AX registers တွေထဲသို့ သိမ်းမှာဖြစ်ပါတယ်။ high-order 16 bits တွေကို DX မှာဖြစ်ပြီး low-order 16 bits တွေကိုတော့ AX မှာဖြစ်ပါတယ်။ division လုပ်ပြီးတဲ့ အခါမှာ 16-bit quotient ကို AX register ထဲသို့သွား မှာဖြစ်ပြီး 16-bit remainder ကို DX register သို့ပို့မှာဖြစ်ပါတယ်။<br><br><center><img src="arithmetic5.jpg" alt="arithmetic5"></center> |
+| 3 | __divisor က doubleword ဖြစ်လျှင် -__<br> dividend က 64 bits long လို့ယူဆမှာဖြစ်ပါတယ် ပြီးတော့ EDX: EAX registers တွေမှာပါ။ high-order 32 bits တွေကို  EDX မှာဖြစ်ပြီး low-order 32 bits တွေကို EAX မှာဖြစ်ပါတယ်၊ division ပြီးတဲ့နောက် 32-bit quotient ကို EAX register သို့ သွားစေပြီး 32-bit remainder ကို EDX register သို့ပိုမှာဖြစ်ပါတယ်။ <br><br><center><img src="arithmetic6.jpg" alt="arithmetic6"></center> |
 
 __ဥပမာ__
 
